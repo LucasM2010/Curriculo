@@ -17,7 +17,7 @@ FROM openjdk:17-slim
 WORKDIR /app
 
 # Copia o JAR gerado na etapa de construção
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar /app/demo.jar
+COPY --from=build /app/target/curriculo-api-0.0.1-SNAPSHOT.jar /app/demo.jar
 
 # Comando para rodar a aplicação
 CMD ["java", "-jar", "demo.jar"]
