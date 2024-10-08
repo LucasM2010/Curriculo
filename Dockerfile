@@ -8,12 +8,6 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Compila o projeto
-RUN mvn clean package
-
-# Etapa de execução
-FROM openjdk:17-jdk-slim
-
 # Define o diretório de trabalho
 WORKDIR /app
 
