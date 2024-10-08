@@ -1,5 +1,5 @@
 # Etapa de construção
-FROM maven:3.8.6-openjdk-17 AS build
+FROM maven:3.9.0 AS build
 
 # Define o diretório de trabalho
 WORKDIR /app
@@ -7,6 +7,12 @@ WORKDIR /app
 # Copia o pom.xml e a fonte
 COPY pom.xml .
 COPY src ./src
+
+# Compila o projeto
+RUN mvn clean package
+
+# Etapa de execução
+FROM openjdk:17-slim
 
 # Define o diretório de trabalho
 WORKDIR /app
