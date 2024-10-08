@@ -4,24 +4,21 @@ FROM maven:3.8.6-openjdk-17 AS build
 # Define o diretório de trabalho
 WORKDIR /app
 
-# Copia o pom.xml e as dependências para o contêiner
+# Copia o arquivo pom.xml e o código fonte
 COPY pom.xml .
 COPY src ./src
 
-# Faz o build do projeto e gera o .jar
+# Faz o build do projeto
 RUN mvn clean package -DskipTests
 
 # Etapa de execução
 FROM openjdk:17-jdk-slim
 
-# Copia o .jar gerado na etapa anterior
+# Copia o artefato gerado da etapa de build
 COPY --from=build /app/target/*.jar app.jar
 
-# Define a variável de ambiente para o nome da aplicação
-ENV SPRING_APPLICATION_NAME=curriculo-api
-
-# Expondo a porta em que a aplicação será executada
+# Expondo a porta
 EXPOSE 8080
 
-# Comando para executar a aplicação
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Comando para rodar a aplicação
+ENTRYPOINT ["java", "-jar", "app.jar"]
