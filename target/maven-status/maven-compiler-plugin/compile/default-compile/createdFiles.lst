@@ -1,0 +1,7 @@
+com\example\curriculo\repository\PerfilRepository.class
+com\example\curriculo\controller\PerfilController.class
+com\example\curriculo\curriculo\Experiencia.class
+com\example\curriculo\controller\ExperienciaController.class
+com\example\curriculo\curriculo\Perfil.class
+com\example\curriculo\repository\ExperienciaRepository.class
+com\example\curriculo\CurriculoApiApplication.class
